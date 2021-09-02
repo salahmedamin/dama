@@ -1,3 +1,6 @@
+html{
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +8,75 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.877);
+}
+body > #root{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.board{
+  height: 90%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  border: 20px solid rgba(11, 62, 158, 0.466);
+  border-radius: 5px;
+}
+
+.board .line{
+  display: flex;
+  width: 100%;
+  padding:0;
+  height: calc( 100% / 8 );
+}
+
+.board .line div{
+  height: 100%;
+  width: calc( 100% / 8 );
+  background: white;
+  transition: 0.3s ease all;
+}
+
+.board .line div.playable{
+  background: rgba(7, 114, 201, 0.466);
+  position: relative;
+  z-index: 0;
+}
+.board .line div.highlighted{
+  background: rgba(18, 57, 230, 0.952) !important;
+  cursor: pointer;
+}
+.board .line div.moveToEat{
+  background: rgba(226, 6, 6, 0.699) !important;
+  cursor: pointer;
+}
+.board .line div.playable .piece{
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 65%;
+  height: 70%;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .3s ease all;
+}
+.board .line div.playable.P1 .piece{
+  background: black;
+}
+.board .line div.playable.P2 .piece{
+  background: rgb(255, 255, 255);
+}
+.board .line div.playable.glow .piece{
+  background: #07c968c7;
+}
+.board .line div.playable .piece.endangered{
+  background: #eb0808be;
 }
